@@ -103,4 +103,35 @@ ${1:function} () {
 }
 endsnippet
 
-# vim:ft=snippets:
+# Writing Snippets
+# https://www.ejmastnak.com/tutorials/vim-latex/ultisnips/#writing-snippets
+# :help UltiSnips-authoring-snippets
+# :help UltiSnips-snippet-options
+
+snippet colors "define color variables (https://colors.sh/)"
+# From https://colors.sh
+NO_FORMAT="\033[0m"
+NC=$NO_FORMAT
+C_AQUA="\033[38;5;14m"
+C_BLUE="\033[38;5;12m"
+C_GREEN="\033[38;5;2m"
+C_GREY="\033[38;5;8m"
+C_LIME="\033[38;5;10m"
+C_ORANGE1="\033[38;5;214m"
+C_PINK1="\033[38;5;218m"
+C_RED="\033[38;5;9m"
+C_YELLOW2="\033[38;5;190m"
+C_YELLOW="\033[38;5;11m"
+endsnippet
+
+snippet echoerr "echo stderr" 
+>2& echo -e "${1:message}"
+endsnippet
+
+snippet /warn(ing)?/ "echo WARNING msg to stderr" r
+>2& echo -e "${C_YELLOW}WARNING:${NC} ${1:message}"
+endsnippet
+
+snippet /^err(or)?/ "echo ERROR msg to stderr" r
+>2& echo -e "${C_RED}ERROR:${NC} ${1:message}"
+endsnippet
