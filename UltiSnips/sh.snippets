@@ -125,13 +125,13 @@ C_YELLOW="\033[38;5;11m"
 endsnippet
 
 snippet echoerr "echo msg to stderr" 
->2& echo -e "${1:message}"
+>&2 echo -e "${1:message}"
 endsnippet
 
 snippet /warn(ing)?/ "echo WARNING msg to stderr" r
->2& echo -e "${C_YELLOW}WARNING:${NC} ${1:message}"
+>&2 echo -e "${C_YELLOW}WARNING:${NC} ${1:message}"
 endsnippet
 
 snippet /^err(or)?/ "echo ERROR msg to stderr" r
->2& echo -e "${C_RED}ERROR:${NC} ${1:message}"
+>&2 echo -e "${C_RED}ERROR:${NC} ${1:message}"
 endsnippet
