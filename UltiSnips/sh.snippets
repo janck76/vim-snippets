@@ -107,6 +107,9 @@ endsnippet
 # https://www.ejmastnak.com/tutorials/vim-latex/ultisnips/#writing-snippets
 # :help UltiSnips-authoring-snippets
 # :help UltiSnips-snippet-options
+#
+# Reload snippets
+# :call UltiSnips#RefreshSnippets()
 
 snippet colors "define color variables (https://colors.sh/)"
 # From https://colors.sh
@@ -124,14 +127,29 @@ C_YELLOW2="\033[38;5;190m"
 C_YELLOW="\033[38;5;11m"
 endsnippet
 
-snippet echoerr "echo msg to stderr" 
+snippet echoerr "echo msg to stderr"
 >&2 echo -e "${1:message}"
+endsnippet
+
+snippet info "echo INFO msg to stderr"
+>&2 echo -e "${C_GREEN}INFO:${NC} ${1:message}"
 endsnippet
 
 snippet /warn(ing)?/ "echo WARNING msg to stderr" r
 >&2 echo -e "${C_YELLOW}WARNING:${NC} ${1:message}"
 endsnippet
 
-snippet /^err(or)?/ "echo ERROR msg to stderr" r
+snippet /err(or)?/ "echo ERROR msg to stderr" r
 >&2 echo -e "${C_RED}ERROR:${NC} ${1:message}"
+endsnippet
+
+snippet /fora(rray)?/ "for ... in ARRAY (fora)" r
+for ${1:i}${2/.+/ in /}"${${2:ARRAY}[@]}"; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+
+snippet scriptdir "set scriptdir variable"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 endsnippet
