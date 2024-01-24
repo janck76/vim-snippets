@@ -153,3 +153,11 @@ endsnippet
 snippet scriptdir "set scriptdir variable"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 endsnippet
+
+snippet tempd "Tempdir" b
+${1:TMPDIR}="$(mktemp -dt ${3:--suffix=${4:.d}} ${2:`!p
+snip.rv = re.sub(r'[^a-zA-Z]', '_', snip.fn) or "untitled"
+`}.XXXXXX --tmpdir=/run/user/$(id -u))"
+${5:${6/(.+)/trap "/}${6:rm -rf '$${1/.*\s//}'}${6/(.+)/" 0               # EXIT\n/}${7/(.+)/trap "/}${7:rm -rf '$${1/.*\s//}'; exit 1}${7/(.+)/" 2       # INT\n/}${8/(.+)/trap "/}${8:rm -rf '$${1/.*\s//}'; exit 1}${8/(.+)/" 1 15    # HUP TERM\n/}}
+
+endsnippet
