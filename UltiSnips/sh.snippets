@@ -185,7 +185,7 @@ do
   case "\$1" in
     -f|--file)
       shift
-      file=$1
+      file=\$1
       shift
       ;;
     -h|--help)
@@ -197,7 +197,7 @@ do
       break
       ;;
     *)
-      echo "Not implemented: $1" >&2
+      echo "Not implemented: \$1" >&2
       exit 1
       ;;
   esac
