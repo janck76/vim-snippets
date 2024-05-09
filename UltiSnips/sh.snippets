@@ -161,3 +161,45 @@ snip.rv = re.sub(r'[^a-zA-Z]', '_', snip.fn) or "untitled"
 ${5:${6/(.+)/trap "/}${6:rm -rf '$${1/.*\s//}'}${6/(.+)/" 0               # EXIT\n/}${7/(.+)/trap "/}${7:rm -rf '$${1/.*\s//}'; exit 1}${7/(.+)/" 2       # INT\n/}${8/(.+)/trap "/}${8:rm -rf '$${1/.*\s//}'; exit 1}${8/(.+)/" 1 15    # HUP TERM\n/}}
 
 endsnippet
+
+snippet usage "usage function"
+usage () {
+   echo "Usage: $(basename \$0) [options]
+
+Options:
+  -i, --install          Install
+  -u, --upgrade          Upgrade
+  -f, --env-file <file>  Environment file
+      --dry-run          Simulate install or upgrade
+  -h, --help             Help
+"
+}
+endsnippet
+
+snippet getopt "getopt template"
+params="$(getopt -o f:h -l file:,help --name "$0" -- "$@")"
+eval set -- "$params"
+
+while true
+do
+  case "\$1" in
+    -f|--file)
+      shift
+      file=$1
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      echo "Not implemented: $1" >&2
+      exit 1
+      ;;
+  esac
+done
+endsnippet
