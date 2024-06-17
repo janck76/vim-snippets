@@ -203,3 +203,7 @@ do
   esac
 done
 endsnippet
+
+snippet issourced "is script being sourced"
+[[ "${BASH_SOURCE[0]}" != "\${0}" ]] || ${1:script_being_sourced}
+endsnippet
