@@ -202,10 +202,23 @@ do
 done
 endsnippet
 
+
 snippet issourced "is script being sourced"
 [[ "${BASH_SOURCE[0]}" != "\${0}" ]] || ${1:script_being_sourced}
 endsnippet
 
-snippet shellcheckd "disable shellcheck"
+
+snippet scd
 # shellcheck disable=SC${1:code}
 endsnippet
+
+
+snippet splitstr
+IFS='${1:split_char}'; read -ra ${2:array} <<<"$${3:string}"
+endsnippet
+
+
+snippet trimspace "trim leading/trailing spaces"
+${1:var}=${$1#"${$1%%[![:space:]]*}"};$1=${$1%"${$1##*[![:space:]]}"}
+endsnippet
+
