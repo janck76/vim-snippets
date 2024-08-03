@@ -139,7 +139,7 @@ snippet /warn(ing)?/ "echo WARNING msg to stderr" r
 >&2 echo -e "${C_YELLOW}WARNING:${NC} ${1:message}"
 endsnippet
 
-snippet /err(or)?/ "echo ERROR msg to stderr" r
+snippet /\berr(or)?/ "echo ERROR msg to stderr" r
 >&2 echo -e "${C_RED}ERROR:${NC} ${1:message}"
 endsnippet
 
@@ -222,3 +222,18 @@ snippet trimspace "trim leading/trailing spaces"
 ${1:var}=${$1#"${$1%%[![:space:]]*}"};$1=${$1%"${$1##*[![:space:]]}"}
 endsnippet
 
+
+snippet traperr "trap errors"
+trap 'error_handler \$? $LINENO; exit \$?' ERR
+
+error_handler () {
+  >&2 echo "Error: (\$1) occurred on line \$2"
+	return "\$1"
+}
+endsnippet
+
+snippet whileread "while read; ... (done)"
+while read -r line; do
+ echo "$line"
+done < <(command)
+endsnippet
