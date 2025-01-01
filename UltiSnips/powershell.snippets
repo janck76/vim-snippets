@@ -1,0 +1,60 @@
+priority -50
+
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+# snippet #! "#!/usr/bin/env (!env)" b
+# `!p snip.rv = '#!/usr/bin/env ' + getShell() + "\n" `
+# endsnippet
+
+snippet pwsh "Powershell env" b
+#!/usr/bin/env pwsh
+
+
+endsnippet
+
+# Inspired by https://dev.to/this-is-learning/how-to-write-better-powershell-scripts-architecture-and-best-practices-emh
+snippet head "Powershell script boilerplate" b
+#!/usr/bin/env pwsh
+
+#Requires -Version 7.4
+<#
+.SYNOPSIS
+    A script that performs some task.
+
+.DESCRIPTION
+    A detailed description of what the script does.
+
+.PARAMETER InputFile
+    The path to the input file.
+
+.PARAMETER OutputFile
+    The path to the output file.
+
+.EXAMPLE
+    .\\MyScript.ps1 -InputFile C:\\input.txt -OutputFile C:\\output.txt
+
+    Runs the script with the specified input and output files.
+#>
+
+$ErrorActionPreference = 'Stop'
+
+
+endsnippet
+
+
+snippet colors "define color variables (https://colors.sh/)"
+# From https://colors.sh
+\$NC="\`e[0m"
+\$C_AQUA="\`e[38;5;14m"
+\$C_BLUE="\`e[38;5;12m"
+\$C_GREEN="\`e[38;5;2m"
+\$C_GREY="\`e[38;5;8m"
+\$C_LIME="\`e[38;5;10m"
+\$C_ORANGE1="\`e[38;5;214m"
+\$C_PINK1="\`e[38;5;218m"
+\$C_RED="\`e[38;5;9m"
+\$C_YELLOW2="\`e[38;5;190m"
+\$C_YELLOW="\`e[38;5;11m"
+endsnippet
